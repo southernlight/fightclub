@@ -68,11 +68,81 @@ $ npm run delete # pm2 delete
 
 ## API 명세
 
-| 기능           | Method | URL                      | Request                                                       | Response                                                                 | 설명                                    |
-| -------------- | ------ | ------------------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------- |
-| 토큰 발급      | POST   | /token                   | {<br>&nbsp;&nbsp;"roomName": "ROOM_NAME",<br>&nbsp;&nbsp;"participantName": "NAME"<br>} | {<br>&nbsp;&nbsp;"token": "JWT_TOKEN"<br>}                              | 룸 참여를 위한 JWT 토큰 발급            |
-| 녹화 시작      | POST   | /recordings/start        | {<br>&nbsp;&nbsp;"roomName": "ROOM_NAME"<br>}                 | {<br>&nbsp;&nbsp;"message": "Recording started",<br>&nbsp;&nbsp;"recording": { "name": "FILE.mp4", "startedAt": 169xxx }<br>} | 해당 룸 녹화 시작, 이미 녹화 중이면 409 반환 |
-| 녹화 중지      | POST   | /recordings/stop         | {<br>&nbsp;&nbsp;"roomName": "ROOM_NAME"<br>}                 | {<br>&nbsp;&nbsp;"message": "Recording stopped",<br>&nbsp;&nbsp;"recording": { "name": "FILE.mp4", "startedAt": 169xxx, "size": 10485760 }<br>} | 해당 룸 녹화 종료, 녹화 중이 아니면 409 반환 |
-| 녹화 목록 조회 | GET    | /recordings  | ?roomName=ROOM_NAME&roomId=ROOM_ID | {<br>&nbsp;&nbsp;"recordings": [<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "EGRESS_ID",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "FILE.mp4",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"roomName": "ROOM_NAME",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"roomId": "ROOM_ID",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"startedAt": 169xxx,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"size": 10485760<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;]<br>} | 녹화된 영상 목록 조회, roomName / roomId 필터 가능 |
-| 녹화 스트리밍  | GET    | /recordings/:recordingName | Header: Range (선택)                                         | 스트리밍 mp4 데이터                                                     | 녹화 영상 스트리밍, Range 요청 지원     |
-| 녹화 삭제      | DELETE | /recordings/:recordingName | -                                                             | {<br>&nbsp;&nbsp;"message": "Recording deleted"<br>}                     | 녹화 파일과 메타데이터 S3에서 삭제     |
+<div style="overflow-x: auto;">
+  <table>
+    <tr>
+      <th>기능</th><th>Method</th><th>URL</th><th>Request</th><th>Response</th><th>설명</th>
+    </tr>
+    <tr>
+      <td>토큰</td><td>POST</td><td>/token</td>
+      <td><pre><code>{
+  "roomName": "ROOM_NAME",
+  "participantName": "NAME"
+}</code></pre></td>
+      <td><pre><code>{
+  "token": "JWT_TOKEN"
+}</code></pre></td>
+      <td>룸 참여 토큰 발급</td>
+    </tr>
+    <tr>
+      <td>녹화시작</td><td>POST</td><td>/recordings/start</td>
+      <td><pre><code>{
+  "roomName": "ROOM_NAME"
+}</code></pre></td>
+      <td><pre><code>{
+  "message": "Recording started",
+  "recording": {
+    "name": "FILE.mp4",
+    "startedAt": 169xxx
+  }
+}</code></pre></td>
+      <td>해당 룸 녹화 시작, 이미 녹화 중이면 409 반환</td>
+    </tr>
+    <tr>
+      <td>녹화중지</td><td>POST</td><td>/recordings/stop</td>
+      <td><pre><code>{
+  "roomName": "ROOM_NAME"
+}</code></pre></td>
+      <td><pre><code>{
+  "message": "Recording stopped",
+  "recording": {
+    "name": "FILE.mp4",
+    "startedAt": 169xxx,
+    "size": 10485760
+  }
+}</code></pre></td>
+      <td>해당 룸 녹화 종료, 녹화 중이 아니면 409 반환</td>
+    </tr>
+    <tr>
+      <td>녹화목록</td><td>GET</td><td>/recordings</td>
+      <td>?roomName=ROOM_NAME&roomId=ROOM_ID</td>
+      <td><pre><code>{
+  "recordings": [
+    {
+      "id": "EGRESS_ID",
+      "name": "FILE.mp4",
+      "roomName": "ROOM_NAME",
+      "roomId": "ROOM_ID",
+      "startedAt": 169xxx,
+      "size": 10485760
+    }
+  ]
+}</code></pre></td>
+      <td>녹화된 영상 목록 조회, roomName / roomId 필터 가능</td>
+    </tr>
+    <tr>
+      <td>녹화스트리밍</td><td>GET</td><td>/recordings/:recordingName</td>
+      <td>Header: Range (선택)</td>
+      <td>스트리밍 mp4 데이터</td>
+      <td>녹화 영상 스트리밍, Range 요청 지원</td>
+    </tr>
+    <tr>
+      <td>녹화삭제</td><td>DELETE</td><td>/recordings/:recordingName</td>
+      <td>-</td>
+      <td><pre><code>{
+  "message": "Recording deleted"
+}</code></pre></td>
+      <td>녹화 파일과 메타데이터 S3에서 삭제</td>
+    </tr>
+  </table>
+</div>
