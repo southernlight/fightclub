@@ -1,0 +1,20 @@
+{
+    "name": "openvidu-recording-basic-node",
+    "version": "1.0.0",
+    "description": "Simple video-call application with recording capabilities",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "start": "pm2 start ecosystem.config.cjs",
+        "stop": "pm2 stop ecosystem.config.cjs",
+        "restart": "pm2 restart ecosystem.config.cjs",
+        "delete": "pm2 delete ecosystem.config.cjs" 
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "3.654.0",
+        "cors": "2.8.5",
+        "dotenv": "16.4.5",
+        "express": "4.21.0",
+        "livekit-server-sdk": "^2.7.2"
+    }
+}
