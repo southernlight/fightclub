@@ -6,10 +6,10 @@
 2. [주요 기능](#주요-기능)
 3. [기술 스택](#기술-스택)
 4. [아키텍처](#아키텍처)
-5. [프로젝트 포스터](#프로젝트-포스터)
+5. [프로젝트 상세](#프로젝트-상세)
 
 ## 프로젝트 개요
-FightClub은 복싱 스파링 매칭 서비스로, 사용자들이 체급에 맞는 스파링 파트너를 손쉽게 찾을 수 있도록 합니다. 틴더 스타일의 스와이프 UI를 채용하여 사용자가 직관적으로 스파링 상대를 고를 수 있습니다. 또한 매칭된 스파링을 실시간 중계하여 다른 사용자들이 관전할 수도 있습니다.
+FightClub은 **복싱 스파링 매칭 서비스**로, 사용자들이 체급에 맞는 스파링 파트너를 손쉽게 찾을 수 있도록 합니다. 틴더 스와이프 UI를 착안해 사용자가 쉽게 스파링 상대를 고를 수 있습니다. 또한 매칭된 스파링을 실시간 중계하여 다른 사용자들이 관전할 수도 있습니다.
 
 | 항목       | 내용                                     |
 |------------|----------------------------------------|
@@ -19,10 +19,9 @@ FightClub은 복싱 스파링 매칭 서비스로, 사용자들이 체급에 맞
 
 
 ## 주요 기능
-- 체급별 매칭
-- 실시간 중계
-- 개인 트레이닝
-
+| 체급별 매칭 | 개인 트레이닝 | 실시간 중계 |
+|------------|------------|------------|
+| ![체급별 매칭](./docs/matching.png) | ![개인 트레이닝](./docs/personal_training.png) |![실시간 중계](./docs/broadcast.png)  |
 
 ## 기술 스택
 
@@ -34,5 +33,13 @@ FightClub은 복싱 스파링 매칭 서비스로, 사용자들이 체급에 맞
 | DevOps/Infra  | Docker, EC2, ECR, Github Actions      |
 | Cloud/Storage | AWS S3                                |
 
+## 아키텍처
+
+![아키텍처](./docs/architecture.png)
+
 ## 프로젝트 상세
-[프로젝트 포스터 보기](./docs/poster.pdf)
+- [프로젝트 포스터 보기](https://drive.google.com/file/d/1TZNs0KaOdQxTN0lks0xlWNfqAlsra-LK/view?usp=drive_link)
+
+- [API 서버](https://github.com/southernlight/fightclub/tree/main/api-server)
+
+- [OpenVidu 서버](https://github.com/southernlight/fightclub/tree/main/openvidu-control-server)
