@@ -19,6 +19,7 @@ FightClub 프로젝트의 **백엔드 API 서버**입니다. Spring Boot 기반�
 ## 주요 워크플로우
 
 - 스파링 요청/거절 플로우
+
 ![MatchingFlow](./docs/MatchingFlow.png)
 
 

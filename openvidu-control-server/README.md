@@ -6,9 +6,11 @@
 
 ## 주요 워크플로우
 - 클라이언트가 roomName과 participantName을 기반으로 openvidu-control-server에서 룸 참여용 JWT 토큰을 발급 받음
+
 ![토큰 발급](./docs/openvidu-1.png)
 
 - 클라이언트가 발급받은 토큰으로 Openvidu 미디어 서버에 접속
+
 ![미디어 서버 접속](./docs/openvidu-2.png)
 
 ## 실행 방법
