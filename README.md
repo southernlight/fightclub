@@ -34,4 +34,5 @@ FightClub은 복싱 스파링 매칭 서비스로, 사용자들이 체급에 맞
 | DevOps/Infra  | Docker, EC2, ECR, Github Actions      |
 | Cloud/Storage | AWS S3                                |
 
-## 프로젝트 상세(프로젝트 포스터)
+## 프로젝트 상세
+[프로젝트 포스터 보기](./docs/poster.pdf)
